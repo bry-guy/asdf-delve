@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -eu
+[ "${BASH_VERSINFO[0]}" -ge 3 ] && set -o pipefail
+
+cat <<-EOM
+Manage delve with asdf.
+
+- https://github.com/bry-guy/asdf-delve
+- https://github.com/go-delve/delve
+EOM
+
