@@ -8,8 +8,9 @@ install() {
   local install_path="$3"
 
   mkdir -p "${install_path}/bin"
-  cd "${download_path}"
-  go build -o "${install_path}/bin/delve"
+  cd "${download_path}/delve/cmd/dlv"
+  go build -o "${install_path}/bin/dlv"
+  cd .. && rm -rf "$download_path"
 }
 
-install "$ASDF_INSTALL_VERSION" "${ASDF_DOWNLOAD_PATH:-}" "$ASDF_INSTALL_PATH"
+install "$ASDF_INSTALL_VERSION" "$ASDF_DOWNLOAD_PATH" "$ASDF_INSTALL_PATH"

@@ -5,8 +5,16 @@ set -eu
 download() {
   local version=$1
   local download_path=$2
+  local source_path="${download_path}/delve"
 
-  git clone https://github.com/go-delve/delve "$download_path" --branch "v${version}"
+  if [ -n "$source_path" ]; then
+    rm -rf "$source_path"
+  fi
+
+  git clone -c advice.detachedHead=false \
+    --depth 1 \
+    --branch "v$version" \
+    https://github.com/go-delve/delve "$source_path"
 }
 
 download "$ASDF_INSTALL_VERSION" "$ASDF_DOWNLOAD_PATH"
